@@ -31,36 +31,3 @@ async function extract() {
     tbody.appendChild(row);
   });
 }
-
-function clearOutput() {
-  document.getElementById("inputUrls").value = "";
-  document.querySelector("#resultTable tbody").innerHTML = "";
-}
-
-function copyResult() {
-  const table = document.querySelector("#resultTable");
-  const range = document.createRange();
-  range.selectNode(table);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-  document.execCommand("copy");
-  window.getSelection().removeAllRanges();
-  alert("Copied to clipboard!");
-}
-
-function exportCSV() {
-  const rows = [["Infringing URL", "Source URL(s)"]];
-  document.querySelectorAll("#resultTable tbody tr").forEach(row => {
-    const cols = row.querySelectorAll("td");
-    rows.push([cols[0].innerText, cols[1].innerText.replace(/\n/g, " | ")]);
-  });
-
-  const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
-  const encodedUri = encodeURI(csvContent);
-  const link = document.createElement("a");
-  link.setAttribute("href", encodedUri);
-  link.setAttribute("download", "ip_house_results.csv");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}

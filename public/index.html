@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IP House Extractor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>IP House Media Extractor</h1>
+    <p class="subtitle">Paste up to 5000 infringing URLs below. Each will be scanned for embedded media.</p>
+
+    <textarea id="inputUrls" placeholder="Paste 1 to 5000 URLs (one per line)..."></textarea>
+
+    <div class="actions">
+      <button onclick="extract()">Extract</button>
+      <button onclick="clearOutput()">Clear</button>
+      <button onclick="copyResult()">Copy Result</button>
+      <button onclick="exportCSV()">Export CSV</button>
+    </div>
+
+    <div class="results-box">
+      <table id="resultTable">
+        <thead>
+          <tr>
+            <th>Infringing URL</th>
+            <th>Source URL(s)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
